@@ -16,38 +16,19 @@ module.exports = function (grunt) {
           "src": ["**/*.es6"],
           "dest": "dist/",
           "ext": ".js"
-        }, {
-          "expand": true,
-          "cwd": "test/lib/",
-          "src": ["**/*.spec.es6"],
-          "dest": "test/dist/",
-          "ext": ".spec.js"
         }]
       }
     },
     "clean": [
-      "dist/",
-      "test/dist"
+      "dist/"
     ],
     "eslint": {
       "target": [
         "Gruntfile.js",
-        "lib/**/*.es6",
-        "test/lib/**/*.es6"
+        "lib/**/*.es6"
       ],
       "options": {
         "configFile": ".eslintrc"
-      }
-    },
-    "mochaTest": {
-      "test": {
-        "options": {
-          "reporter": "spec",
-          "captureFile": "test_results.txt",
-          "quiet": false,
-          "timeout": 2000
-        },
-        "src": ["test/dist/**/*.spec.js"]
       }
     },
     "watch": {
@@ -55,14 +36,13 @@ module.exports = function (grunt) {
         "files": [
           "Gruntfile.js",
           "**/.eslintrc",
-          "lib/**/*.es6",
-          "test/lib/**/*.es6"
+          "lib/**/*.es6"
         ],
         "tasks": ["default"]
       }
     },
     "jscs": {
-      "src": ["lib/**/*.es6", "test/lib/**/*.spec.es6", "Gruntfile.js"],
+      "src": ["lib/**/*.es6", "Gruntfile.js"],
       "options": {
         "config": true,
         "esnext": true,
@@ -76,13 +56,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-babel");
   grunt.loadNpmTasks("grunt-eslint");
   grunt.loadNpmTasks("grunt-contrib-watch");
-  grunt.loadNpmTasks("grunt-mocha-test");
   grunt.loadNpmTasks("grunt-contrib-clean");
 
   // Default task.
   grunt.registerTask("default", [
-    "build",
-    "test"
+    "build"
   ]);
 
   // Common build task
@@ -92,8 +70,4 @@ module.exports = function (grunt) {
     "babel"
   ]);
 
-  // Common test task
-  grunt.registerTask("test", [
-    "mochaTest:test"
-  ]);
 };
