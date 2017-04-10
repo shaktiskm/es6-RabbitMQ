@@ -1,0 +1,17 @@
+node_modules
+test_results.txt
+dist/**/*.js
+dist/**/*.js.map
+test/dist/**/*.js
+test/dist/**/*.js.map
+npm-debug.log
+.*.swp
+._*
+.DS_Store
+.git
+
+.idea/
+.idea/*
+
+.idea/workspace.xml
+.idea/shelf
