@@ -12,8 +12,19 @@
 2. Start the application
 
     ```
-    node dist/api.js
+    import RabbitMQ from "es6-RabbitMQ";
+    
+    let rabbitmqConfig = {
+        "url": "amqp://guest:guest@127.0.0.1:5672",
+        "queueName": "chk-rabbit",
+        "exchangeName": "chk-rabbit",
+        "exchangeType": "direct",
+        "prefetchCount": 1,
+        "options": {}
+    },
+    rabbitmqInstance = new RabbitMQ(rabbitmqConfig);
     ```
+    Now you can call it's wrapper methods.
 
 ## Managing the project with Grunt
 
